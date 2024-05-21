@@ -1,0 +1,89 @@
+﻿def main_function():
+    print("This program performs operations on fractions. Enter")
+    print("1 : To add fractions")
+    print("2 : To subtract fractions")
+    print("3 : To multiply fractions")
+    print("4 : To divide fractions")
+    print("9 : To exit the program")
+
+
+def add_fractions(numerator1, denominator1, numerator2, denominator2):
+    numerator = (numerator1 * denominator2) + (numerator2 * denominator1)
+    denominator = denominator1 * denominator2
+    return numerator, denominator
+
+
+def subtract_fractions(numerator1, denominator1, numerator2, denominator2):
+    numerator = (numerator1 * denominator2) - (numerator2 * denominator1)
+    denominator = denominator1 * denominator2
+    return numerator, denominator
+
+
+def multiply_fractions(numerator1, denominator1, numerator2, denominator2):
+    numerator = numerator1 * numerator2
+    denominator = denominator1 * denominator2
+    return numerator, denominator
+
+
+def divide_fractions(numerator1, denominator1, numerator2, denominator2):
+    numerator = numerator1 * denominator2
+    denominator = denominator1 * numerator2
+    return numerator, denominator
+
+
+while True:
+    main_function()
+    user_input = int(input())
+
+
+    if user_input == 9:
+        break
+
+
+    print("For fraction 1:")
+    numerator1 = int(input("Enter the numerator: "))
+    denominator1 = int(input("Enter the denominator: "))
+
+
+    while denominator1 == 0:
+        print("The denominator must be nonzero.")
+        denominator1 = int(input("Enter the denominator: "))
+
+
+    print("For fraction 2:")
+    numerator2 = int(input("Enter the numerator: "))
+
+
+    while numerator2 == 0:
+        print ("To divide, the second fraction must be nonzero.")
+        numerator2 = int(input("Enter a nonzero number for the numerator: "))
+
+
+    denominator2 = int(input("Enter the denominator: "))
+
+
+    while denominator2 == 0:
+        print("The denominator must be nonzero.")
+        denominator2 = int(input("Enter the denominator: "))
+
+
+    if user_input == 1:
+        result = add_fractions(numerator1, denominator1, numerator2, denominator2)
+        operation = "+"
+    elif user_input == 2:
+        result = subtract_fractions(numerator1, denominator1, numerator2, denominator2)
+        operation = "-"
+    elif user_input == 3:
+        result = multiply_fractions(numerator1, denominator1, numerator2, denominator2)
+        operation = "*"
+    elif user_input == 4:
+        result = divide_fractions(numerator1, denominator1, numerator2, denominator2)
+        operation = "/"
+    else:
+        break
+
+
+    print(f"{numerator1}/{denominator1} {operation} {numerator2}/{denominator2} = {result[0]}/{result[1]}")
+
+
+main_function()
